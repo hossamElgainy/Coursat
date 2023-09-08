@@ -1,0 +1,40 @@
+﻿@model Coursat.Models.UserLinks
+<ul class="list-group list-group-flush rounded-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+        <a href="@Model?.Facebook">
+            <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+        </a>
+        <a href="@Model?.Twitter">
+            <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+        </a>
+        <a href="@Model?.Website">
+            <i class="fas fa-globe fa-lg text-warning"></i>
+        </a>
+        <a href="@Model?.LinkedIn">
+            <i class="fab fa-linked-in fa-lg" style="color: #3b5998;"></i>
+        </a>
+        <a href="@Model?.StackoverFlow">
+            <i class="fab fa-stack-overflow fa-lg" style="color: #3b5998;"></i>
+        </a>
+        <a href="@Model?.Github">
+            <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+        </a>
+    </li>
+
+    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+        @if (Model == null)
+        {
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserLinksModel">Add Links</button>
+        }
+        else
+        {
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#UpdateUserLinksModel">Update Links
+            </button>
+        }
+    </li>
+
+</ul>
+

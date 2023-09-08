@@ -1,0 +1,77 @@
+﻿@using Coursat.Data;
+@using Microsoft.AspNetCore.Identity;
+@model Coursat.Models.Course
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h1 class="section-title bg-white text-center text-primary px-3">@Model.Title</h1>
+</div><br />
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="~/CategoryImages/@Model.ImagePath" class="img-fluid rounded-start" style="height:100%" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text">@Model.Price</p>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id"> <i class="fa-solid fa-trash"></i> </a>
+                <a class="btn btn-secondary" asp-action="Create" asp-controller="CourseLessons" asp-route-CourseId="@Model.Id"> <i class="fa-solid fa-plus"></i> </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Content
+            </th>
+            <th>
+                Added At
+            </th>
+            <th>Control</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CourseLessons)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTimeItemAdded)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-controller="CourseLessons" asp-route-id="@item.Id"> <i class="fa-solid fa-pen-to-square"></i> </a> |
+                    <a class="btn btn-success" asp-action="Details" asp-controller="CourseLessons" asp-route-id="@item.Id"> <i class="fa-solid fa-info"></i> </a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="CourseLessons" asp-route-id="@item.Id"> <i class="fa-solid fa-trash"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+<a asp-action="Index">Back to List</a>
+

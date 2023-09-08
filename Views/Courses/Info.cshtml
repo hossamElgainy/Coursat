@@ -1,0 +1,103 @@
+﻿@using Coursat.Data;
+@using Microsoft.AspNetCore.Identity;
+@model Coursat.Models.Course
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h1 class="section-title bg-white text-center text-primary px-3">@Model.Title</h1>
+</div>
+<br />
+<div class="card mb-3" >
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="~/CategoryImages/@Model.ImagePath" class="img-fluid rounded-start" style="height:100%"/>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><small class="text-muted">@Model.CreatedBy</small></p>
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <p>
+                        Please
+                        <a asp-action="RegisterUser" asp-controller="UserAuth" data-bs-toggle="modal" data-bs-target="#UserRegisterModel">Register</a>
+                        Or
+                        <a asp-action="Login" asp-controller="UserAuth" data-bs-toggle="modal" data-bs-target="#UserLoginModel">Login</a>
+                        To Subscribe
+                    </p>
+                    <a class="btn btn-primary" asp-action="Index" asp-controller="CourseLessons" asp-route-id="@Model.Id">Watch</a>
+
+                }
+                else
+                {
+                    if (ViewBag.HasSubscription != null)
+                    {
+                        <p>you are subscriped</p>
+                    }
+                    else
+                    {
+                        <form asp-action="Subscribe" asp-controller="Home" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <input type="hidden" name="CourseId" value="@Model.Id" class="form-control" />
+                                <input type="hidden" name="UserId" value="@ViewBag.UserId" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Subscribe" class="btn btn-primary"/>
+                            </div>
+                        </form>
+                        <a class="btn btn-primary" asp-action="Index" asp-controller="CourseLessons" asp-route-id="@Model.Id">Watch</a>
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Added At
+            </th>
+            <th>
+                Content
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CourseLessons)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTimeItemAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+<a asp-action="Index">Back to List</a>

@@ -1,0 +1,76 @@
+﻿@using Coursat.VM;
+@model IEnumerable<Coursat.Models.CourseLessons>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-8">
+        <div class="watch">
+            <video controls>
+                @if (ViewBag.Lesson != null)
+                {
+                    <source src="~/CourseVideos/@ViewBag.Lesson.Content" />
+                }
+
+            </video>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="lessons-list">
+            @foreach (var item in Model)
+            {
+                <div class="lesson-data">
+                    <a asp-action="Index" asp-controller="CourseLessons" asp-route-LessonId="@item.Id">
+                        <div class="row">
+                            <img class="col-3" src="~/CategoryImages/ADO.NET.png" />
+                            <h4 class="col-9">@item.Title</h4>
+                        </div>
+                    </a>
+                    <hr>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .lessons-list, .watch {
+        border: 1px solid #f00;
+        padding: 5px;
+    }
+    .lessons-list {
+        background-color: #eee;
+    }
+
+    .watch {
+        position: relative;
+        height: 600px;
+    }
+
+        .watch video {
+            position: absolute;
+            width: 98%;
+            height: 98%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    .lessons-list .lesson-data {
+        margin: 10px;
+        color:#000;
+        text-decoration:none;
+    }
+    .lessons-list .lesson-data a{
+        color:#000;
+        text-decoration:none;
+    }
+
+</style>

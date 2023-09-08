@@ -1,0 +1,23 @@
+﻿<div class="modal fade" id="UserLoginModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <partial name="_UserLoginPartial" model="new LoginModel
+        {
+            Email = String.Empty,
+            Password = String.Empty,
+            RememberMe = false
+        }">
+</div>
+<div class="modal fade" id="UserRegisterModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <partial name="_UserRegisterPartial" model="new RegisterModel
+        {
+            Email = String.Empty,
+            Password = String.Empty,
+            ConfirmPassword = String.Empty,
+            FirstName = String.Empty,
+            LastName = String.Empty,
+            PhoneNumber = String.Empty,
+            Address1 = String.Empty,
+            Address2 = String.Empty,
+            PostCode = String.Empty,
+            AcceptUserAgreement = false
+        }">
+</div>

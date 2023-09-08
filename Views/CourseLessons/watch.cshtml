@@ -1,0 +1,13 @@
+﻿@model Coursat.Models.CourseLessons
+@{
+}
+
+<div class="watch">
+    <video controls>
+        @if (ViewData["Lesson"]!=null)
+        {
+            <source src="~/CourseVideos/@ViewData["Lesson"]." />
+        }
+
+    </video>
+</div>

@@ -1,0 +1,13 @@
+﻿@using Coursat.Data;
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "Admin"))
+{
+    <a class="nav-item nav-link" asp-area="Admin" asp-controller="Course" asp-action="Index">Courses</a>
+    <a class="nav-item nav-link" asp-area="Admin" asp-controller="Roles" asp-action="Index">Roles</a>
+    <a class="nav-item nav-link" asp-area="Admin" asp-controller="MediaType" asp-action="Index">Media</a>
+
+}
+

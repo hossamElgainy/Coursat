@@ -1,0 +1,72 @@
+﻿@model Coursat.Models.CourseLessons
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>CourseLessons</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="myForm" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="text" asp-for="CourseId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="file" asp-for="clientFile" onchange="loadFile(event)" />
+                <div id="preview"></div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MediaTypeId" class="control-label"></label>
+                <select asp-for="MediaTypeId" class="form-control" asp-items="ViewBag.media">
+                    <option value="0">--Select Media Type--</option>
+                </select>
+                <span asp-validation-for="MediaTypeId" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-success"><i class="fa-solid fa-angle-left"></i> Back to List</a>
+</div>
+
+
+@section Scripts {
+    <script>
+        const video = document.createElement('video');
+
+        var loadFile = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                video.src = reader.result;
+                video.controls = true;
+                video.muted = false;
+                video.height = 240; // in px
+                video.width = 320; // in px
+                const box = document.getElementById('preview');
+                box.appendChild(video);
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+    </script>
+}

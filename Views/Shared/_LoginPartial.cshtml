@@ -1,0 +1,146 @@
+﻿@using Coursat.Data;
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    
+    <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+    </li>
+        <!-- User -->
+        <li class="LoginDropdown dropdown nav-item px-lg-5 d-none d-lg-block">
+            <a class="dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="avatar avatar-online">
+                    <img src="~/img/5.png" alt class="w-px-40 h-auto rounded-circle" />
+                </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="avatar avatar-online">
+                                    <img src="~/img/5.png" alt class="w-px-40 h-auto rounded-circle" />
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="fw-semibold d-block">Hoso</span>
+                                <small class="text-muted">Admin</small>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="dropdown-divider"></div>
+            </li>
+            @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "Instructor"))
+            {
+                <li>
+                    <a class="dropdown-item" asp-area="Instructor" asp-controller="Course" asp-action="Index">
+                        <i class="fa-solid fa-book me-2"></i>
+                        <span class="align-middle">My Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-area="Instructor" asp-controller="Course" asp-action="Create">
+                        <i class="fa fa-plus me-2"></i>
+                        <span class="align-middle">Add New Course</span>
+                    </a>
+                </li>
+            }
+            @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "Student"))
+                {
+                    <li>
+                        <a class="dropdown-item" asp-area="" asp-controller="Courses" asp-action="MyLearning">
+                            <i class="fa-solid fa-book me-2"></i>
+                            <span class="align-middle">My Learning</span>
+                        </a>
+                    </li>
+                }
+            <li>
+                <a class="dropdown-item"
+                    asp-action="Index"
+                    asp-controller="Profile"
+                    asp-route-id="">
+                    <i class="fa fa-user me-2"></i>
+                    <span class="align-middle">My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-cog me-2"></i>
+                    <span class="align-middle">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">
+                    <span class="d-flex align-items-center align-middle">
+                        <i class="flex-shrink-0 fa fa-credit-card me-2"></i>
+                        <span class="flex-grow-1 align-middle">Billing</span>
+                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <div class="dropdown-divider"></div>
+            </li>
+            <li>
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button id="logout" type="submit" class="dropdown-item">
+                        <i class="fa fa-power-off"></i>
+                        Logout
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </li>
+    <!--/ User -->
+}
+else
+{
+        <li class="LoginDropdown dropdown btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+            <a class="dropdown-toggle registerBtn"
+               id="register"
+               asp-area="Identity"
+               asp-page="/Account/Register"
+               data-bs-toggle="modal"
+               data-bs-target="#UserRegisterModel">Join Now
+           </a>
+
+            <ul class="dropdown-menu dropdown-menu-end m-0 wow fadeInDown " data-wow-delay="0.05s" aria-labelledby="LogMenu" style="margin:200px">
+                <li >
+                    <a class="dropdown-item"
+                       id="login"
+                       asp-area="Identity"
+                       asp-page="/Account/Login"
+                       data-bs-toggle="modal"
+                       data-bs-target="#UserLoginModel">
+                        <i class="fab fa-log-in"></i> Login
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a class="dropdown-item"
+                       id="register"
+                       asp-area="Identity"
+                       asp-page="/Account/Register"
+                       data-bs-toggle="modal"
+                       data-bs-target="#UserRegisterModel">
+                        <i class="fab fa-signup"></i> Register
+                    </a>
+
+                </li>
+            </ul>
+
+            <i class="fa fa-arrow-right ms-3"></i>
+
+        </li>
+    
+}
+</ul>

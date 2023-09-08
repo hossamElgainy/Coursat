@@ -1,0 +1,54 @@
+﻿@using Coursat.Data;
+@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">System Users</h2>
+        </div>
+    </div>
+
+    <table id="mytable" class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">
+                    User Id
+                </th>
+                <th scope="col">
+                    User Name
+                </th>
+                <th scope="col">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="table-primary">
+                    <td scope="row" width="30%">
+                        @item.Id
+                    </td>
+                    <td>
+                       @item.UserName
+                    </td>
+                    <td>
+                        <a asp-controller="Roles" asp-action="addRoles" asp-route-userId="@item.Id" class="btn btn-sm btn-success">
+                            <i class="bi bi-pencil"></i>
+                            Edit Role
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
