@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P9pJfDV4H+nYpSmAf8vRZS+eHgN4LMy8jVvbNPa1LJg=",
+  "Hash": "+1u88zUWSQI1H+hOYqDf8aIAJKdHyI2qTHESVJKAz+4=",
   "Source": "Coursat",
   "BasePath": "_content/Coursat",
   "Mode": "Default",
@@ -1358,6 +1358,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\CourseVideos\\ice_video_20220121-184418.webm"
+    },
+    {
+      "Identity": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\Untitled4.png",
+      "SourceId": "Coursat",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\asp.net projects\\Coursat\\wwwroot\\",
+      "BasePath": "_content/Coursat",
+      "RelativePath": "CourseVideos/Untitled4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CourseVideos\\Untitled4.png"
+    },
+    {
+      "Identity": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\Untitledh.png",
+      "SourceId": "Coursat",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\asp.net projects\\Coursat\\wwwroot\\",
+      "BasePath": "_content/Coursat",
+      "RelativePath": "CourseVideos/Untitledh.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CourseVideos\\Untitledh.png"
     },
     {
       "Identity": "E:\\asp.net projects\\Coursat\\wwwroot\\css\\datatables.min.css",

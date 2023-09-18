@@ -38,7 +38,6 @@ namespace Coursat.Data
 
         public DbSet<Course> Course { get; set; }
         public DbSet<CourseLessons> CourseLessons { get; set; }
-        public DbSet<MediaType> MediaType { get; set; }
         public DbSet<UserCourse> UserCourse { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<UserLinks> Links { get; set; }

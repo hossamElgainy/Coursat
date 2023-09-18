@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Coursat.Models.Course>
+﻿@model IEnumerable<Coursat.VM.CourseVM>
 
 @{
     ViewData["Title"] = $"{ViewBag.CategoryName} Courses";
@@ -35,7 +35,15 @@
                             <h5 class="mb-4">@item.Title</h5>
                         </div>
                         <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>@item.CreatedBy</small>
+                            <small class="flex-fill text-center border-end py-2">
+                                <a style="color:#000"
+                                   asp-action="Index"
+                                   asp-controller="Profile"
+                                   asp-route-id="@item.UserId">
+                                    <i class="fa fa-user-tie text-primary me-2"></i>
+                                    <span class="align-middle">@item.CreatedBy</span>
+                                </a>
+                            </small>
                             <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
                         </div>
                     </div>

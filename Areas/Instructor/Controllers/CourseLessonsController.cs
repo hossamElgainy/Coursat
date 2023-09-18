@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Humanizer;
 
 namespace Coursat.Areas.Instructor.Controllers
 {
@@ -22,7 +23,6 @@ namespace Coursat.Areas.Instructor.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IHostingEnvironment _host;
-
         public CourseLessonsController(IUnitOfWork unitOfWork, IHostingEnvironment host)
         {
             _unitOfWork = unitOfWork;
@@ -58,10 +58,6 @@ namespace Coursat.Areas.Instructor.Controllers
         // GET: Instructor/courseLessons/Create
         public IActionResult Create(int CourseId)
         {
-            var media = _unitOfWork.MediaTypes.GetAll();
-
-            SelectList mediaType = new SelectList(media, "Id", "Title", 0);
-            ViewBag.media = mediaType;
             return View();
         }
 
@@ -70,7 +66,7 @@ namespace Coursat.Areas.Instructor.Controllers
         public IActionResult Create(CourseLessons courseLessons)
         {
             string fileName = string.Empty;
-
+            
             courseLessons.DateTimeItemAdded = DateTime.Now;
 
             if (ModelState.IsValid)
@@ -81,7 +77,7 @@ namespace Coursat.Areas.Instructor.Controllers
                     fileName = courseLessons.clientFile.FileName;
                     string fullPath = Path.Combine(myUpload, fileName);
                     courseLessons.clientFile.CopyTo(new FileStream(fullPath, FileMode.Create));
-                    courseLessons.Content = fileName;
+                    courseLessons.Content = fileName;           
                 }
                 _unitOfWork.courseLessons.Add(courseLessons);
                 return RedirectToAction("Info", "Course", new { id = courseLessons.CourseId });
@@ -103,10 +99,6 @@ namespace Coursat.Areas.Instructor.Controllers
             {
                 return NotFound();
             }
-            var media = _unitOfWork.MediaTypes.GetAll();
-
-            SelectList mediaType = new SelectList(media, "Id", "Title",0);
-            ViewBag.media = mediaType;
             return View(courseLessons);
         }
 

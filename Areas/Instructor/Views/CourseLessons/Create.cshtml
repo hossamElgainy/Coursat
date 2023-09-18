@@ -4,16 +4,16 @@
     ViewData["Title"] = "Create A Lesson";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>CourseLessons</h4>
-<hr />
+<br /><br />
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h1 class="section-title bg-white text-center text-primary px-3">@ViewData["Title"]</h1>
+</div>
 <div class="row">
+
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="text" asp-for="CourseId"/>
+            <input type="hidden" asp-for="CourseId"/>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
@@ -21,21 +21,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
+                <label class="control-label">File</label>
                 <input type="file" asp-for="clientFile" onchange="loadFile(event)" />
+                <span asp-validation-for="clientFile" class="text-danger"></span>
+
                 <div id="preview"></div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="MediaTypeId" class="control-label"></label>
-                <select asp-for="MediaTypeId" class="form-control" asp-items="ViewBag.media">
-                    <option value="0">--Select Media Type--</option>
-                </select>
-                <span asp-validation-for="MediaTypeId" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

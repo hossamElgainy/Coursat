@@ -69,6 +69,14 @@
       "PackagePath": "staticwebassets\\CourseVideos\\Facebook 654741679301257(480p).mp4"
     },
     {
+      "Id": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\Untitled4.png",
+      "PackagePath": "staticwebassets\\CourseVideos\\Untitled4.png"
+    },
+    {
+      "Id": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\Untitledh.png",
+      "PackagePath": "staticwebassets\\CourseVideos\\Untitledh.png"
+    },
+    {
       "Id": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\ice_video_20220121-184418.webm",
       "PackagePath": "staticwebassets\\CourseVideos\\ice_video_20220121-184418.webm"
     },

@@ -57,10 +57,6 @@ namespace Coursat.Areas.Admin.Controllers
         // GET: Admin/courseLessons/Create
         public IActionResult Create(int CourseId)
         {
-            var media = _unitOfWork.MediaTypes.GetAll();
-
-            SelectList mediaType = new SelectList(media, "Id", "Title", 0);
-            ViewBag.media = mediaType;
             return View();
         }
 
@@ -101,10 +97,6 @@ namespace Coursat.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var media = _unitOfWork.MediaTypes.GetAll();
-
-            SelectList mediaType = new SelectList(media, "Id", "Title",0);
-            ViewBag.media = mediaType;
             return View(courseLessons);
         }
 

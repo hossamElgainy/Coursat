@@ -1,14 +1,14 @@
 ﻿@model Coursat.Models.Course
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Course";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Edit</h1>
-
-<h4>Course</h4>
-<hr />
+<br />
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h1 class="section-title bg-white text-center text-primary px-3">@ViewData["Title"]</h1>
+</div>
+<br />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" enctype="multipart/form-data" method="post">

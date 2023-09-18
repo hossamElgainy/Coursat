@@ -1,15 +1,16 @@
 ﻿@model Coursat.Models.CourseLessons
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Lesson Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
+<br />
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h1 class="section-title bg-white text-center text-primary px-3">@ViewData["Title"]</h1>
+</div>
+<hr />
 <div>
-    <h4>CourseLessons</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)

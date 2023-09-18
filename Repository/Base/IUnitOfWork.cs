@@ -8,7 +8,7 @@ namespace Coursat.Repository.Base
         IRepository<Course> Courses { get; }
         IRepository<IdentityRole> IdentityRoles { get; }
         IRepository<CourseLessons> courseLessons { get; }
-        IRepository<MediaType> MediaTypes { get; }
+        //IRepository<MediaType> MediaTypes { get; }
         IRepository<UserCourse> UserCourses { get; }
         IRepository<Category> Categories { get; }
         IRepository<UserLinks> Links { get; }

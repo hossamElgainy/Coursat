@@ -83,14 +83,15 @@ namespace Coursat.Controllers
                           join cat in _unitOfWork.Categories.GetAll()
                           on courses.CategoryId equals cat.Id
                           where cat.Id == id
-                          select new Course
+                          select new CourseVM
                           {
                               Id = courses.Id,
                               Title = courses.Title,
                               Description = courses.Description,
                               ImagePath = courses.ImagePath,
                               CreatedAt = courses.CreatedAt,
-                              CreatedBy = user.FirstName + " " + user.LastName, 
+                              CreatedBy = user.FirstName + " " + user.LastName,
+                              UserId = user.Id,
                           }).ToList();
             ViewBag.CategoryName = _unitOfWork.Categories.GetById(id).Name;
             return View(course);

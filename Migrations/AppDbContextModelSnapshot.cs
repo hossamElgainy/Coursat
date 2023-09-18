@@ -321,22 +321,22 @@ namespace Coursat.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e1e1cbb9-a9af-4121-946e-fccf8ab8ddf8",
-                            ConcurrencyStamp = "92c9fdad-0f64-4e49-8382-26a44c4c8028",
+                            Id = "56daaf49-9e7d-4acb-bd7c-6e0768e0c5a2",
+                            ConcurrencyStamp = "c36c169e-27e5-4083-837c-95775210f87e",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "f81aaa03-425a-49dd-9c3e-e5ed3d261611",
-                            ConcurrencyStamp = "9b5de922-08c1-48ee-8b37-efc66e7fa233",
+                            Id = "a92e73ab-0b16-42a3-a75a-d88a5389c4cf",
+                            ConcurrencyStamp = "3b7cc350-c153-4047-b840-b42df18e90da",
                             Name = "Instructor",
                             NormalizedName = "instructor"
                         },
                         new
                         {
-                            Id = "5ca0c651-b032-464c-9f4b-50c388ab4057",
-                            ConcurrencyStamp = "3afcf9fd-a235-456d-9b96-babb82678081",
+                            Id = "bcbc3b1b-414a-4b20-bd26-d517cf4ed9fc",
+                            ConcurrencyStamp = "877436a4-57b0-4b3e-9460-4ea74ff736d6",
                             Name = "Student",
                             NormalizedName = "student"
                         });
