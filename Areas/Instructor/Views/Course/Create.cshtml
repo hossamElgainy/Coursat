@@ -34,12 +34,14 @@
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
                 <input type="file" asp-for="clientFile" onchange="loadFile(event)" />
-                <img id="myImg" height="200" style="margin:30px" />
+                <img id="myImg" class="img-thumbnail" height="0" style="margin:30px"/>
             </div>            
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save Course" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -56,6 +58,7 @@
             var reader = new FileReader();
             reader.onload = function(){
                 var myImg = document.getElementById('myImg');
+                myImg.style.height = "200px";
                 myImg.src = reader.result;
             }
             reader.readAsDataURL(event.target.files[0]);

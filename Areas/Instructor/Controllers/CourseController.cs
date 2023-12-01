@@ -46,7 +46,7 @@ namespace Coursat.Areas.Instructor.Controllers
             {
                 return NotFound();
             }
-            var course = _unitOfWork.Courses.FindOne(id, "CourseLessons").FirstOrDefault(z => z.Id == id);
+            var course = _unitOfWork.Courses.FindOne(id, new string[] { "CourseLessons" } ).FirstOrDefault(z => z.Id == id);
             if (course == null)
             {
                 return NotFound();

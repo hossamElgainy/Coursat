@@ -19,9 +19,6 @@ namespace Coursat.Models
         [ForeignKey("Course")]
 
         public int CourseId { get; set; }
-        [ForeignKey("MediaType")]
-        [DisplayName("Media")]
-        public int MediaTypeId { get; set; }
         
     }
 }

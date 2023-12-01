@@ -185,9 +185,6 @@ namespace Coursat.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MediaTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -197,31 +194,7 @@ namespace Coursat.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.HasIndex("MediaTypeId");
-
                     b.ToTable("CourseLessons");
-                });
-
-            modelBuilder.Entity("Coursat.Models.MediaType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ThumbnailImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MediaType");
                 });
 
             modelBuilder.Entity("Coursat.Models.UserCourse", b =>
@@ -321,22 +294,22 @@ namespace Coursat.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "56daaf49-9e7d-4acb-bd7c-6e0768e0c5a2",
-                            ConcurrencyStamp = "c36c169e-27e5-4083-837c-95775210f87e",
+                            Id = "5b1e91fd-5842-4927-b3b6-27cfd7e78cc2",
+                            ConcurrencyStamp = "536b3473-ff5d-44ba-8942-5eb8af3e9662",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "a92e73ab-0b16-42a3-a75a-d88a5389c4cf",
-                            ConcurrencyStamp = "3b7cc350-c153-4047-b840-b42df18e90da",
+                            Id = "1047af39-f005-4301-8817-0fc993435960",
+                            ConcurrencyStamp = "cc34f201-90de-4b1f-9315-7bf430125fc4",
                             Name = "Instructor",
                             NormalizedName = "instructor"
                         },
                         new
                         {
-                            Id = "bcbc3b1b-414a-4b20-bd26-d517cf4ed9fc",
-                            ConcurrencyStamp = "877436a4-57b0-4b3e-9460-4ea74ff736d6",
+                            Id = "8d6e2347-1a4c-4958-aa3d-10366be6f05d",
+                            ConcurrencyStamp = "3c188d11-afbd-4fc6-9278-8322453678bb",
                             Name = "Student",
                             NormalizedName = "student"
                         });
@@ -472,12 +445,6 @@ namespace Coursat.Migrations
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Coursat.Models.MediaType", null)
-                        .WithMany("CourseLessons")
-                        .HasForeignKey("MediaTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Coursat.Models.UserCourse", b =>
@@ -570,11 +537,6 @@ namespace Coursat.Migrations
                     b.Navigation("CourseLessons");
 
                     b.Navigation("UserCourse");
-                });
-
-            modelBuilder.Entity("Coursat.Models.MediaType", b =>
-                {
-                    b.Navigation("CourseLessons");
                 });
 #pragma warning restore 612, 618
         }

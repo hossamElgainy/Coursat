@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+1u88zUWSQI1H+hOYqDf8aIAJKdHyI2qTHESVJKAz+4=",
+  "Hash": "QSvKYSTY/InpynzBW55/ixk5Ye2iWz0lqX0Jz+vaOBo=",
   "Source": "Coursat",
   "BasePath": "_content/Coursat",
   "Mode": "Default",
@@ -1358,6 +1358,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\CourseVideos\\ice_video_20220121-184418.webm"
+    },
+    {
+      "Identity": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\Introduction to Kali Linux.mp4",
+      "SourceId": "Coursat",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\asp.net projects\\Coursat\\wwwroot\\",
+      "BasePath": "_content/Coursat",
+      "RelativePath": "CourseVideos/Introduction to Kali Linux.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CourseVideos\\Introduction to Kali Linux.mp4"
     },
     {
       "Identity": "E:\\asp.net projects\\Coursat\\wwwroot\\CourseVideos\\Untitled4.png",

@@ -28,8 +28,8 @@ namespace Coursat.Controllers
         public IActionResult Index()
         {
             var course = (from courses in _unitOfWork.Courses.GetAll()
-                         join user in _context.Users.ToList()
-                         on courses.CreatedBy equals user.Id  
+                          join user in _context.Users.ToList()
+                          on courses.CreatedBy equals user.Id  
 
                           select new CourseVM
                          {

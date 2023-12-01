@@ -1,6 +1,8 @@
 ﻿
 @model IEnumerable<Coursat.VM.CourseVM>
-
+@using Coursat.Data;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     ViewData["Title"] = "Courses";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,8 +23,31 @@
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid rounded" height="200px" src="~/CategoryImages/@item.ImagePath" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a asp-action="Info" asp-route-id="@item.Id" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
+                                @if (!SignInManager.IsSignedIn(User))
+                                {
+                                    <a asp-action="Info" asp-route-id="@item.Id" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 30px;">Read More</a>
+                                }
+                                else
+                                {
+                                    if (ViewBag.HasSubscription != null)
+                                    {
+                                        <p>you are subscriped</p>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="Subscribe" asp-controller="Home" method="post">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <input type="hidden" name="CourseId" value="@item.Id" class="form-control" />
+                                                <input type="hidden" name="UserId" value="@ViewBag.UserId" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <a asp-action="Info" asp-route-id="@item.Id" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius:30px 0 0 30px;">Read More</a>
+                                                <input type="submit" value="Join Now" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;" />
+                                            </div>
+                                        </form>
+                                    }
+                                }
                             </div>
                         </div>
                         <div class="course-text text-center p-4 pb-0">
